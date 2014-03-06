@@ -1,0 +1,36 @@
+#! /bin/bash
+# required packages:
+# ---- zenity
+# ---- pdftk
+#################################################
+
+# check for zenity
+gui=$(which zenity)
+if [ ! -x "$gui" ];
+then
+    echo "Zenity is required: 'sudo apt-get install zenity"
+    exit 0
+fi
+
+# check for pdftk
+gui=$(which pdftk)
+if [ ! -x "$gui" ];
+then
+    echo "pdftk is required: 'sudo apt-get install pdftk"
+    exit 0
+fi
+
+
+
+O=$IFS # speichere default File-Seperator
+# schreibe alle Files in ein Array
+IFS=$'\n' arFILES=($(echo "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS" )) 
+IFS=$O # setze default File-Seperator wieder zurueck
+
+ZIEL=$(zenity --entry --text "Path and filename of merged file" --entry-text="/tmp/DESTI.pdf")
+
+(
+echo "Füge Dateien zusammen..."
+pdftk "${arFILES[@]}" cat output "$ZIEL"
+
+)|zenity --progress --pulsate --text="merging..." --percentage=0

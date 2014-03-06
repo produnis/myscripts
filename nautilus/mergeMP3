@@ -1,0 +1,38 @@
+#! /bin/bash
+# benötigt die Pakete:
+# ---- zenity
+# ---- mp3val
+#################################################
+
+# check for zenity
+gui=$(which zenity)
+if [ ! -x "$gui" ];
+then
+    echo "Zenity is required: 'sudo apt-get install zenity"
+    exit 0
+fi
+
+# check for mp3val
+gui=$(which mp3val)
+if [ ! -x "$gui" ];
+then
+    echo "mp3val is required: 'sudo apt-get install mp3val"
+    exit 0
+fi
+
+
+O=$IFS # speichere default File-Seperator
+# schreibe alle Files in ein Array
+IFS=$'\n' arFILES=($(echo "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS" )) 
+IFS=$O # setze default File-Seperator wieder zurueck
+
+ZIEL=$(zenity --entry --text "Path and filename of merged mp3" --entry-text="/tmp/MERGED.mp3")
+
+(
+echo "merging..."
+cat "${arFILES[@]}" > "$ZIEL"
+
+echo "Repairing with mp3val..."
+mp3val $ZIEL -f -nb
+
+)|zenity --progress --pulsate --text="processing" --percentage=0
