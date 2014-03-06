@@ -1,0 +1,34 @@
+#!/bin/bash
+###
+# This script scanns the current dir for a ".git"-Folder.
+# If it cannot find folder ".git", it does a "cd .." and
+# starts scan again.
+# If "cd .." leads to root-Dir "/", it quits.
+#--------
+# If it finds a ".git"-folder, it gets the current $PWD
+# and rsync it to $PWD_bak
+#-------------------------------------------------------
+SHERRIF=0
+while [ $SHERRIF -lt 1 ]; do
+
+	if [ -d .git ]; then
+		echo $PWD
+		BAKDIR="${PWD}_bak"
+		echo $BAKDIR
+		echo ".git-folder found"
+		echo "rsync to backup..."
+		rsync -avz ${PWD}/ $BAKDIR
+		SHERRIF=1
+	else
+		echo $PWD
+		echo "No .git-folder found here."
+		echo "Trying parent-folder..."
+		if [ "$PWD" == "/" ]; then
+			echo "This is the root-Folder /"
+			echo "There is no git-project to backup!"
+			echo "Quitting."
+			SHERRIF=1
+		fi
+		cd ..
+	fi
+done
