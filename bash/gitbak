@@ -1,13 +1,20 @@
 #!/bin/bash
 ###
+# git Backup - 
+# backup your git project
+#-----------
 # This script scanns the current dir for a ".git"-Folder.
 # If it cannot find folder ".git", it does a "cd .." and
 # starts scan again.
 # If "cd .." leads to root-Dir "/", it quits.
 #--------
-# If it finds a ".git"-folder, it gets the current $PWD
+# If it finds a ".git"-folder, it gets the current path $PWD
 # and rsync it to $PWD_bak
 #-------------------------------------------------------
+# Now you have a backup of your git project. 
+# I wrote this when I started with git. Having a backup
+# allows to test some weird re-basing-merging-git-commands without worrying to mess things up... 
+
 SHERRIF=0
 while [ $SHERRIF -lt 1 ]; do
 
