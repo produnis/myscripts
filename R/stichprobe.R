@@ -50,8 +50,7 @@ survey.categorical.meanError <- function(z = 1.96, P = 0.5, N = 20000, n = 377){
 # for a survey with categorical items
 # Default options are:
 #   n = sample size achieved
-#   z = 1.96 (z-value of normal distribution,
-#             1.96 -> 95 % Confidence level)
+#   alpha = 0.05 (error of means)
 #   P = percentage for answer balance (worst case is 50% = 0.5)
 #   N = population size 
 survey.categorical.conf  <- function(alpha = 0.05, P = 0.5, N = 20000, n = 377){
