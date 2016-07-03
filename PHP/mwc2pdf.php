@@ -14,6 +14,7 @@
 ##
 ## -----------------------------------------------
 ## Requires:
+## - mediawiki 1.27
 ## - PHP >= 5.4
 ## - wkhtmltopdf
 ## - pdftk
@@ -34,7 +35,7 @@
 
 # + + + + + + + + + + + + + + + + + + + + + + +
 ## Change this vars to fit your system
-$mywiki = "http://192.168.0.2/produniswiki/"; // URL to index.php
+$mywiki = "http://192.168.0.4/produniswiki/"; // URL to index.php
 $kategorie = "Kategorie:Hauptkategorie"; // Which Category to grab?
 $kategorie_word = "Kategorie:";          // What is "Category:" in your wiki's language?
 # + + + + + + + + + + + + + + + + + + + + + + +
@@ -49,7 +50,7 @@ $kategorie_word = "Kategorie:";          // What is "Category:" in your wiki's l
 # List all Subcategories
 $cmd_subcat = "api.php?action=query&format=xml&list=categorymembers&cmlimit=5000&cmtitle=";
 # List all Pages of Category
-$cmd_catinfo = "api.php?action=query&format=xml&prop=categoryinfo&titles=";
+$cmd_catinfo = "api.php?action=query&format=xml&prop=pageprops&titles=";
 # Get URL from pageid
 $cmd_geturlfromID = "api.php?action=query&format=xml&inprop=url&prop=info&pageids=";
 
