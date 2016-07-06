@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 #
+# use in terminal with:
+# "python2 mwc2pdf.py"
+#
+#----------------------
+
 import os
 import re
 import subprocess
