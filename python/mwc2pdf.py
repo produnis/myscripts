@@ -45,7 +45,7 @@
 # + + + + + + + + + + + + + + + + + + + + + + +
 ## Change this vars to fit your system
 mywiki 			= "http://192.168.0.4/produniswiki/"# URL to your wiki's index.php
-kategorie 		= "Kategorie:Privat"				# Which Category to grab?
+kategorie 		= "Kategorie:Familie"				# Which Category to grab?
 kategorie_word 	= "Kategorie:"						# What is "Category:" in your wiki's language?
 # + + + + + + + + + + + + + + + + + + + + + + +
 keep_tmp_pdfs = "no"  	# switch "no" / "yes" to keep tmp-pdf-files of every page
@@ -276,7 +276,7 @@ options = {
 
 
 for f in the_prefix:
-	prozente = round(artikelzaehler*100/gesamtzahl,2)
+	prozente = round(artikelzaehler*100/gesamtzahl,3)
 	print("Processing %s (%s of %s) / %s %%" % (the_names[artikelzaehler], (artikelzaehler+1), gesamtzahl, prozente) )
 
 	# Getting printable URL
@@ -295,7 +295,12 @@ for f in the_prefix:
 	for i in range(current_pdf.numPages):
 		output_pdf_stream.addPage(current_pdf.getPage(i))
 		if i==0:
-			output_pdf_stream.addBookmark(str(the_bookmarkname),seitenzaehler)
+			if (is_category[artikelzaehler] == "C"):
+				# Add Parent Bookmark for Category
+				current_parent = output_pdf_stream.addBookmark(str(the_bookmarkname),seitenzaehler)				
+			else:
+				# Add Child Bookmark for Page
+				output_pdf_stream.addBookmark(str(the_bookmarkname),seitenzaehler,parent=current_parent)
 		seitenzaehler = seitenzaehler + 1
 	
 	# cleaning up temp-pdf
