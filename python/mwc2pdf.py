@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 #
 ## Usage:
-## 1) Change the three lines 47-49
+## 1) Change the three lines 49-51
 ##    to fit your situation
 ## 2) open terminal
 ## 3) ./PATH/TO/mwc2pdf.py
@@ -23,6 +23,7 @@
 ##
 ## -----------------------------------------------
 ## Requires:
+## - mediawiki >= 1.27
 ## - wkhtmltopdf
 ## - Python 2  with:
 ## - -- pdfkit
@@ -34,7 +35,8 @@
 ## -------------------------
 ##
 ## Usage:
-## 1) Change the three lines to fit your situation
+## 1) Change the three lines in 49-51 
+##    to fit your situation
 ## 2) open terminal
 ## 3) $ /PATH/TO/mwc2pdf.py 
 ##           
@@ -45,7 +47,7 @@
 # + + + + + + + + + + + + + + + + + + + + + + +
 ## Change this vars to fit your system
 mywiki 			= "http://192.168.0.4/produniswiki/"# URL to your wiki's index.php
-kategorie 		= "Kategorie:Familie"				# Which Category to grab?
+kategorie 		= "Kategorie:Hauptkategorie"				# Which Category to grab?
 kategorie_word 	= "Kategorie:"						# What is "Category:" in your wiki's language?
 # + + + + + + + + + + + + + + + + + + + + + + +
 keep_tmp_pdfs = "no"  	# switch "no" / "yes" to keep tmp-pdf-files of every page
@@ -172,19 +174,14 @@ while done == False:
 	
 	#get pageid of current category
 	current_parent = loop_id[y]
-#	print("looplist: %s" % loop_list[y])
 	the_url = "%s%s%s" % (mywiki, cmd_subcat, loop_list[y])
 	the_url = the_url.encode('utf-8')
-#	print(the_url)
 	mycontent = urllib2.urlopen(the_url)
 	mydata = mycontent.read()
 	mycontent.close()
-#	print(mydata)
 	data = ET.fromstring(mydata)
-#	print (data)
 
 	for child in data.iter('cm'):
-#		print "popo %s" % child
 		neuer_titel = child.get('title')
 		neue_pageid = child.get('pageid')
 
@@ -198,7 +195,6 @@ while done == False:
 					print("Page already in list, skipping %s" % neuer_titel)
 				else: 
 					print("New page found: %s" % neuer_titel)
-					#print child
 					the_pageids.append(neue_pageid)
 					the_names.append(neuer_titel)
 					the_parentid.append(current_parent)
@@ -208,6 +204,7 @@ while done == False:
 					the_prefix.append(the_prefix_dummy2)
 					is_category.append("P")
 			else:
+				# This is a File. We can skip that and try the next.
 				x = x - 1
 		
 		# is this a Category?	
@@ -216,7 +213,6 @@ while done == False:
 				print("Category already in list, skipping %s" % neuer_titel)
 			else: 
 				print("New category found: %s" % (neuer_titel))
-				#print child
 				loop_list.append(neuer_titel)
 				loop_id.append(neue_pageid)
 				the_prefix_dummy = "%05d" % (x)
