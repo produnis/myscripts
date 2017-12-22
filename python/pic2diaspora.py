@@ -40,6 +40,7 @@ podurl 		= 'https://your.pod.org' 	# The URL of your account's pod
 poduser 	= 'USERNAME'				# Username	
 poduserpwd 	= 'SUPERSECRET'				# Password
 standardmessage = '#cool #hashtags'		# message posted with each photo, e.g. "#nsfw"
+aspect_to_post  = "public" 				# ids of aspects to post to, eg. = (4520, 4521) 
 
 #---------------------------------------------
 #########################################################
@@ -98,7 +99,7 @@ for pics in pictures:
 			connection.login()
 			token = repr(connection)
 			stream = diaspy.streams.Stream(connection)
-			stream.post(photo=pics, text=textmessage)
+			stream.post(photo=pics, text=textmessage, aspect_ids=aspect_to_post)
 			
 			# write pic's filename to archive log
 			f=open(archive_path,"a")
