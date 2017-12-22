@@ -5,7 +5,7 @@ import sys
 ########################################################
 #
 # This script posts pictures from a given directory
-# to a given Friendica-Account. It posts one picture per round.
+# to a given Friendica- or GNUsocial-Account. It posts one picture per round.
 # Subfolders are not supported.
 #
 # Requires:
@@ -90,7 +90,7 @@ for pics in pictures:
 				textmessage=standardmessage
 	
 			# post pic to friendica
-			print('Upload pic %s with message\n %s \nto Friendica\n' % (pics, textmessage))
+			print('Upload pic %s with message\n %s \nto Friendica or GNUsocial\n' % (pics, textmessage))
 			url = "https://{}:{}@{}//api/statuses/update.xml".format(poduser, poduserpwd, podurl)
 			photo = open(pics, 'rb')
 			multipart_form_data = {'media': photo }
@@ -101,7 +101,7 @@ for pics in pictures:
 			  #'in_reply_to_status_id': 'id of the post to reply to (if this is a reply)',
 			  #'contact_allow': [ list of contacts id to set the post private to those contacts]
 			 }
-			requests.post(url, params=params, files=multipart_form_data)
+			requests.post(url, data=params, files=multipart_form_data)
 			
 			
 			

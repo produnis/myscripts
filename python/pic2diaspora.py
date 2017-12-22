@@ -98,7 +98,7 @@ for pics in pictures:
 			connection.login()
 			token = repr(connection)
 			stream = diaspy.streams.Stream(connection)
-			stream.post(photo=pics, text=standardmessage)
+			stream.post(photo=pics, text=textmessage)
 			
 			# write pic's filename to archive log
 			f=open(archive_path,"a")
