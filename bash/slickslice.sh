@@ -2,8 +2,9 @@
 # http://slickslice.sourceforge.net/
 # Copyright 2007,2008 mojoholder
 # Distributed under the terms of the GNU General Public License, v2 or later
+# slightly modified by produnis 02/2018
 
-VERSION="0.9"
+VERSION="0.9produnis"
 
 # You can change your default slickslice options in
 # ~/.slickslice-config file
