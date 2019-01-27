@@ -3,8 +3,8 @@
 ## 					Welcome to mwc2pdf
 ## ----------------------------------------------
 ## Media Wiki Category To PDF (mwc2pdf)...
-## - is a php script that exports a Category from MediaWiki
-##   into PDF, including all pages of that category as well as 
+## - is a python script that exports a Category from MediaWiki
+##   into a PDF, including all pages of that category as well as 
 ##   all pages from subcategories.
 ## - mwc2pdf uses MediaWiki's  "api.php" to collect all data 
 ##   and it creates a sorted "pagetree" without doubles/twin entries.
