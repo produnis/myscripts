@@ -40,7 +40,7 @@
 ##
 ## USAGE:
 ## ######
-## 1) Change the lines 53-60
+## 1) Change the lines 52-59
 ##    to fit your situation
 ## 2) open terminal
 ## 3) ./PATH/TO/mwc2pdf.py
@@ -53,7 +53,7 @@ mywiki 			= "https://de.wikipedia.org/w/"	# URL to your wiki's index.php
 kategorie 		= "Kategorie:Hauptkategorie"	# Which Category to grab?
 kategorie_word 		= "Kategorie:"			# What is "Category:" in your wiki's language?
 username 		= 'produnis'			# Username to login with
-userpwd			= '6SuperSecret#'		# Userpassword
+userpwd			= 'SuperSecret'			# Userpassword
 botpwd 			= 'myapibot@foobarfoobarfoobar'	# Password of Special:BotPasswords in the style BOTNAME@password
 # + + + + + + + + + + + + + + + + + + + + + + +
 keep_tmp_pdfs = "no"  	# switch "no" / "yes" to keep tmp-pdf-files of every page
