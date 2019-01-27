@@ -49,7 +49,7 @@
 
 # + + + + + + + + + + + + + + + + + + + + + + +
 ## Change this vars to fit your system
-mywiki 			= "https://de.wikipedia.org/w/"	# URL to your wiki's index.php
+mywiki 			= "https://your.wiki.ltd/w/"	# URL to your wiki's index.php
 kategorie 		= "Kategorie:Hauptkategorie"	# Which Category to grab?
 kategorie_word 		= "Kategorie:"			# What is "Category:" in your wiki's language?
 username 		= 'produnis'			# Username to login with
