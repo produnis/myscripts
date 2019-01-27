@@ -49,12 +49,12 @@
 
 # + + + + + + + + + + + + + + + + + + + + + + +
 ## Change this vars to fit your system
-mywiki 			= "https://produnis.spdns.org/produniswiki/"	# URL to your wiki's index.php
-kategorie 		= "Kategorie:Hauptkategorie"					# Which Category to grab?
-kategorie_word 	= "Kategorie:"									# What is "Category:" in your wiki's language?
-username 		= 'produnis'									# Username to login with
-userpwd			= '6hansch#'									# Userpassword
-botpwd 			= 'pdfexport@jv6sto7cjvp741f9fvgtloaom5klttph'	# Password of Special:BotPasswords in the style BOTNAME@password
+mywiki 			= "https://de.wikipedia.org/w/"	# URL to your wiki's index.php
+kategorie 		= "Kategorie:Hauptkategorie"	# Which Category to grab?
+kategorie_word 		= "Kategorie:"			# What is "Category:" in your wiki's language?
+username 		= 'produnis'			# Username to login with
+userpwd			= '6SuperSecret#'		# Userpassword
+botpwd 			= 'myapibot@foobarfoobarfoobar'	# Password of Special:BotPasswords in the style BOTNAME@password
 # + + + + + + + + + + + + + + + + + + + + + + +
 keep_tmp_pdfs = "no"  	# switch "no" / "yes" to keep tmp-pdf-files of every page
 
