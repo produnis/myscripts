@@ -95,7 +95,7 @@ for pics in pictures:
 				print("No txt-file found. Posting Image only\n")
 				textmessage=standardmessage
 				
-			# post pic to diaspora
+			# post pic to mastodon
 			print('Upload pic %s with path %s to Mastodon' % (pics, pic_path))
 			mastopicid = mastodon.media_post(media_file = pics, description=textmessage)
 			mastodon.status_post(status=textmessage, media_ids=mastopicid['id'], visibility=visibility)
